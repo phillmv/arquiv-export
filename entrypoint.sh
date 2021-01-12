@@ -9,7 +9,7 @@ bundle install
 bundle list | grep "middleman ("
 
 echo 'Building site...'
-bundle exec middleman build
+bundle exec middleman build --verbose
 
 echo 'Publishing site...'
 cd ${INPUT_BUILD_LOCATION}
