@@ -9,9 +9,11 @@ echo 'Installing bundles...'
 # bundle list | grep "middleman ("
 
 pwd
+echo `ls`
 echo 'Building site...'
 bundle exec middleman build --verbose
 
+pwd
 echo `ls`
 echo 'Publishing site...'
 cd ${INPUT_BUILD_LOCATION}
