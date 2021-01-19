@@ -3,6 +3,10 @@ require 'gfm_renderer/converter'
 
 Converter.new(".", "./source/entries").process!
 
+puts "where are these files???"
+puts __dir__
+puts `pwd`
+
 set :markdown_engine, :GFM
 
 # Activate and configure extensions
