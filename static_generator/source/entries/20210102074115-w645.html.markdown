@@ -1,0 +1,35 @@
+---
+notebook: dev
+identifier: 20210102074115-w645
+metadata: 
+kind: 
+source: 
+url: 
+latitude: 
+longitude: 
+occurred_at: &1 2021-01-02 07:41:15.000000000 -05:00
+ended_at: 
+created_at: 2021-01-02 07:43:56.265705000 -05:00
+updated_at: 2021-01-09 14:15:18.196321000 -05:00
+summary: 
+subject: 
+from: 
+to: 
+in_reply_to: 20210101142301-4xxf
+state: 
+hide: false
+date: *1
+tags: "#gitsync"
+---
+#gitsync 
+
+successfully split classes out as named above.
+
+while writing it out, realized that the SyncWithGit class was being called from SyncFromDisk. This makes sense in a dropbox import method, but broke a test because some yaml was re-serialized slightly differently and broke a test.
+
+(note to self:
+- [x] test entry.to_yaml -> disk -> from yaml -> to disk interaction, assert no changes if possible
+
+)
+
+i think i now can finally work on the git interaction, separately from committing an individual entry. git pull - but there's a conflict. git push, but there's a conflict.

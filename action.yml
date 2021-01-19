@@ -1,7 +1,7 @@
 
-name: Middleman Github Pages Action
-description: 'Deploying your Middleman repo to the gh-pages branch of the same repository'
-author: "Yuri Koval'ov"
+name: Arquivo Static Export Action
+description: 'Converts Arquivo yaml into a static site using the gh-pages branch of the same repository'
+author: "Phill mV"
 branding:
   icon: 'box'
   color: 'orange'

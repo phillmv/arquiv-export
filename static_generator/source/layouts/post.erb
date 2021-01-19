@@ -1,0 +1,14 @@
+<% wrap_layout :layout do %>
+  <div class="pagehead pt-2 mb-2">
+    <nav aria-label="Breadcrumb" class="mb-1">
+      <ol>
+        <li class="breadcrumb-item"><h3 class="d-inline"><a href="/">Timeline</a></h3></li>
+        <li class="breadcrumb-item"><h3 class="d-inline"><a href="<%= blog_day_path(current_article.date.year, current_article.date.month, current_article.date.day) %>"><%= current_article.date.strftime('%Y-%m-%d') %></a></h3></li>
+        <li class="breadcrumb-item" aria-current="page"><h3 class="d-inline"><%= current_article.data.identifier %></h3></li>
+        
+      </ol>
+    </nav>
+ </div>
+
+  <%= partial "partials/entry", locals: { current_article: current_article } %>
+<% end %>

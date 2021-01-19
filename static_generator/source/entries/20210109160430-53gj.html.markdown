@@ -1,0 +1,26 @@
+---
+notebook: dev
+metadata: 
+kind: 
+source: 
+url: 
+latitude: 
+longitude: 
+occurred_at: &1 2021-01-09 16:04:30.000000000 -05:00
+ended_at: 
+created_at: 2021-01-09 16:07:59.826547000 -05:00
+updated_at: 2021-01-09 16:07:59.826547000 -05:00
+summary: 
+identifier: 20210109160430-53gj
+subject: 
+from: 
+to: 
+in_reply_to: 20210109141550-hj7p
+state: 
+hide: false
+date: *1
+tags: "#gitsync"
+---
+#gitsync 
+
+- git pull needs to look up current branch / not assume it's master

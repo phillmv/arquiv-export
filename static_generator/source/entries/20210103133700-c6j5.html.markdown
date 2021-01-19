@@ -1,0 +1,41 @@
+---
+notebook: dev
+metadata: 
+kind: 
+source: 
+url: 
+latitude: 
+longitude: 
+occurred_at: &1 2021-01-03 13:37:00.000000000 -05:00
+ended_at: 
+created_at: 2021-01-03 13:37:30.298926000 -05:00
+updated_at: 2021-01-03 13:37:30.298926000 -05:00
+summary: 
+identifier: 20210103133700-c6j5
+subject: 
+from: 
+to: 
+in_reply_to: 20210102133703-3479
+state: 
+hide: false
+date: *1
+tags: "#gitsync"
+---
+#gitsync 
+
+:thinking: should have some sort of verification that we're actually adjudicating two entries.
+
+```
+require 'pry'
+require 'yaml'
+
+ours = YAML.load_file(ARGV[1])["updated_at"]
+theirs = YAML.load_file(ARGV[2])["updated_at"]
+
+if ours < theirs
+  FileUtils.cp(ARGV[2], ARGV[1])
+end
+
+FileUtils.cp(winner[1], ARGV[1]) unless winner == ARGV[1]
+exit 0
+```

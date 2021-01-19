@@ -1,0 +1,37 @@
+---
+pageable: true
+---
+
+<% case page_type
+    when 'day' %>
+<div class="pagehead pt-2 mb-2">
+    <nav aria-label="Breadcrumb" class="mb-1">
+      <ol>
+        <li class="breadcrumb-item"><h3 class="d-inline"><a href="/">Timeline</a></h3></li>
+        <li class="breadcrumb-item" aria-current="page"><h3 class="d-inline"><%= Date.new(year, month, day).strftime('%Y-%m-%d') %></h3></li>
+      </ol>
+    </nav>
+ </div>
+  <% when 'month' %>
+    <%= Date.new(year, month, 1).strftime('%b %Y') %>
+  <% when 'year' %>
+    <%= year %>
+  <% end %>
+ 
+<% if paginate && num_pages > 1 %>
+  <p>Page <%= page_number %> of <%= num_pages %></p>
+
+  <% if prev_page %>
+    <p><%= link_to 'Previous page', prev_page %></p>
+  <% end %>
+<% end %>
+
+<% page_articles.each do |article| %>
+  <%= partial "partials/entry", locals: { current_article: article } %>
+<% end %>
+
+<% if paginate %>
+  <% if next_page %>
+    <p><%= link_to 'Next page', next_page %></p>
+  <% end %>
+<% end %>

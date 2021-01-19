@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title></title>
+    <link href="/test-middleman-actions/stylesheets/site.css" rel="stylesheet" />
+    <script src="/test-middleman-actions/javascripts/site.js"></script>
+  </head>
+  <body>
+
+    <div class="container-xl clearfix pt-1">
+      <div class="sidebar-container">
+
+        <div class="mb-3">
+          <h1 class="arquivo"><a href="/">Arquivo</a></u></h1>
+        </div>
+      </div>
+      <div class="content-container">
+        <div class="pagehead pt-2 mb-2">
+    <nav aria-label="Breadcrumb" class="mb-1">
+      <ol>
+        <li class="breadcrumb-item"><h3 class="d-inline"><a href="/">Timeline</a></h3></li>
+        <li class="breadcrumb-item"><h3 class="d-inline"><a href="">2021-01-03</a></h3></li>
+      </ol>
+    </nav>
+ </div>
+    2021-01-03
+ 
+
+  <div class="entry-box entry-show">
+  <div class="Box-body border-0 markdown-body js-task-list-container">
+    <div class="entry-body">
+      <div class="mb-3">
+
+        <a href="/test-middleman-actions/20210103133700-c6j5/" class="Box-btn-octicon btn-octicon f4">
+          <svg class="octicon octicon-link mr-1 v-visible" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg>2021-01-03 13:37:00 -0500
+        </a>
+      </div>
+      <p data-sourcepos="1:1-1:9"><a href="/test-middleman-actions/tags/gitsync/">#gitsync</a></p>
+<p data-sourcepos="3:1-3:94">:thinking: should have some sort of verification that we're actually adjudicating two entries.</p>
+<pre data-sourcepos="5:1-18:3"><code>require 'pry'
+require 'yaml'
+
+ours = YAML.load_file(ARGV[1])["updated_at"]
+theirs = YAML.load_file(ARGV[2])["updated_at"]
+
+if ours &lt; theirs
+  FileUtils.cp(ARGV[2], ARGV[1])
+end
+
+FileUtils.cp(winner[1], ARGV[1]) unless winner == ARGV[1]
+exit 0
+</code></pre>
+    </div>
+  </div>
+</div>
+
+
+
+      </div>
+
+      <!-- <aside> -->
+      <!--   <h2>Recent Articles</h2> -->
+      <!--   <ol> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/20210118103133-pj9r/"></a> <span>Jan 18</span></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/20210115050000-4ccffhw/"></a> <span>Jan 15</span></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/20210113153000-4hw8vcw/"></a> <span>Jan 13</span></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/20210109160430-53gj/"></a> <span>Jan  9</span></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/20210109141550-hj7p/"></a> <span>Jan  9</span></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/20210109135948-mg7c/"></a> <span>Jan  9</span></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/20210108050000-4ccffhw/"></a> <span>Jan  8</span></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/20210106153000-4hw8vcw/"></a> <span>Jan  6</span></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/20210103133700-c6j5/"></a> <span>Jan  3</span></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/20210102133703-3479/"></a> <span>Jan  2</span></li> -->
+      <!--      -->
+      <!--   </ol> -->
+      <!--  -->
+      <!--   <h2>Tags</h2> -->
+      <!--   <ol> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/tags/gitsync/">#gitsync (6)</a></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/tags/ideas/">#ideas (1)</a></li> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/tags/webexport/">#webexport (1)</a></li> -->
+      <!--      -->
+      <!--   </ol> -->
+      <!--  -->
+      <!--   <h2>By Year</h2> -->
+      <!--   <ol> -->
+      <!--      -->
+      <!--       <li><a href="/test-middleman-actions/2021/">2021 (14)</a></li> -->
+      <!--      -->
+      <!--   </ol> -->
+      <!-- </aside> -->
+    </div>
+  </body>
+</html>

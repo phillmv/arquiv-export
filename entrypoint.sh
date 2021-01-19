@@ -3,10 +3,10 @@
 set -e
 
 echo 'Installing bundles...'
-cd ${INPUT_SITE_LOCATION}
-gem install bundler
-bundle install
-bundle list | grep "middleman ("
+# cd ${INPUT_SITE_LOCATION}
+# gem install bundler
+# bundle install
+# bundle list | grep "middleman ("
 
 echo 'Building site...'
 bundle exec middleman build --verbose

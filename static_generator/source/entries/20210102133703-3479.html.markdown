@@ -1,0 +1,107 @@
+---
+notebook: dev
+identifier: 20210102133703-3479
+occurred_at: &2 !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2021-01-02 18:37:03.000000000 Z
+  zone: &1 !ruby/object:ActiveSupport::TimeZone
+    name: America/New_York
+  time: 2021-01-02 13:37:03.000000000 Z
+metadata: 
+kind: 
+source: 
+url: 
+latitude: 
+longitude: 
+ended_at: 
+created_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2021-01-02 18:38:11.260991000 Z
+  zone: *1
+  time: 2021-01-02 13:38:11.260991000 Z
+updated_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2021-01-02 21:41:12.100569000 Z
+  zone: *1
+  time: 2021-01-02 16:41:12.100569000 Z
+summary: 
+subject: 
+from: 
+to: 
+in_reply_to: 20210102074115-w645
+state: 
+hide: false
+date: *2
+tags: "#gitsync"
+---
+#gitsync 
+
+git/config
+```
+[merge "last-in-wins"]
+  name = last in wins
+  driver = /usr/local/bin/chruby-exec ruby-2.6.5 -- ruby /tmp/merger.rb %O %A %B %L %P
+  recursive = text
+```
+
+https://git-scm.com/docs/gitattributes#_defining_a_custom_merge_driver
+
+also git pull --no-edit
+
+(gotta write the winner to the location in `%A`
+```
+require 'pry'
+require 'yaml'
+require 'active_support/time_with_zone'
+
+ours = [YAML.load_file(ARGV[1]), ARGV[1]]
+theirs = [YAML.load_file(ARGV[2]), ARGV[2]]
+
+winner = [ours,theirs].sort_by { |attr, file| attr["updated_at"] }.last[1]
+
+FileUtils.cp(winner[1], ARGV[1]) unless winner == ARGV[1]
+exit 0
+```
+
+issues to resolve:
+
+auto installing this custom merger in the git repos
+reliably fucking executing it jfc is another issue
+
+https://stackoverflow.com/questions/7607125/git-merge-conflict-to-always-take-the-newest-file
+
+```
+#!/bin/sh
+if git merge-file -p -q "$2" "$1" "$3" > /dev/null;
+        then git merge-file "$2" "$1" "$3";
+        else
+                MINE=$(git log --format="%ct" --no-merges "$6" -1 $5);
+                THEIRS=$(git log --format="%ct" --no-merges "$7" -1 $5);
+                if [ $MINE -gt $THEIRS ]; then
+                  git merge-file -q --ours "$2" "$1" "$3" >/dev/null
+                else
+                  git merge-file -q --theirs "$2" "$1" "$3">/dev/null
+                fi
+fi
+```
+
+`git-merge-newest %O %A %B %L %P $HEAD $1`
+
+```
+[merge "newest"]
+  name = foo
+  driver = /usr/local/bin/chruby-exec ruby-2.6.5 -- ruby /tmp/pry.rb %O %A %B %L %P `git rev-parse --abbrev-ref HEAD` $1
+  recursive = text
+```
+
+---
+
+okay so i have a few options here.
+
+i need to run merge and if it conflicts pick the most recent one.
+
+- pick between ruby and shell
+- pick between using git log time, file mtime, or entry updated_at
+  - actually, [looks like file mtime in git is unreliable](https://git.wiki.kernel.org/index.php/GitFaq#Why_isn.27t_Git_preserving_modification_time_on_files.3F)?
+  - problem: git log time only has second resolution, which breaks tests
+  - on the other time, could just use ruby
+    - problem there: limited in what code can be used in ad hoc git repo installs. i.e. right now entry dumps depends on active_support/time_with_zone
+
+might have to redo how entry yaml is generated to eschew time_with_zone, so that i can just `require 'yaml'` in a quick shell script

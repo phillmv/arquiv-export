@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title></title>
+    <%# <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
+    <%= stylesheet_link_tag "site" %>
+    <%= javascript_include_tag "site" %>
+  </head>
+  <body>
+
+    <div class="container-xl clearfix pt-1">
+      <div class="sidebar-container">
+        &nbsp;
+      </div>
+      <div class="content-container">
+        <%= yield %>
+      </div>
+
+      <!-- <aside> -->
+      <!--   <h2>Recent Articles</h2> -->
+      <!--   <ol> -->
+      <!--     <% blog.articles[0...10].each do |article| %> -->
+      <!--       <li><%= link_to article.title, article %> <span><%= article.date.strftime('%b %e') %></span></li> -->
+      <!--     <% end %> -->
+      <!--   </ol> -->
+      <!--  -->
+      <!--   <h2>Tags</h2> -->
+      <!--   <ol> -->
+      <!--     <% blog.tags.each do |tag, articles| %> -->
+      <!--       <li><%= link_to "#{tag} (#{articles.size})", tag_path(tag) %></li> -->
+      <!--     <% end %> -->
+      <!--   </ol> -->
+      <!--  -->
+      <!--   <h2>By Year</h2> -->
+      <!--   <ol> -->
+      <!--     <% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %> -->
+      <!--       <li><%= link_to "#{year} (#{articles.size})", blog_year_path(year) %></li> -->
+      <!--     <% end %> -->
+      <!--   </ol> -->
+      <!-- </aside> -->
+    </div>
+  </body>
+</html>
