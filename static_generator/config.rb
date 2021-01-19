@@ -1,14 +1,8 @@
 require 'gfm_renderer/gfm_template'
 require 'gfm_renderer/converter'
 
-puts "converting arquivo files"
-puts "nput dir: #{ENV["GITHUB_WORKSPACE"]}"
-
+# obviously move this out of here somehow, maybe set it in the entrypoint.sh
 Converter.new(ENV["GITHUB_WORKSPACE"], "./source/entries").process!
-
-puts "where are these files???"
-puts __dir__
-puts `pwd`
 
 set :markdown_engine, :GFM
 

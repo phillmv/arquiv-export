@@ -12,12 +12,13 @@ LABEL "com.github.actions.color"="orange"
 
 LABEL "repository"="http://github.com/phillmv/arquivo-export"
 
-ADD static_generator /
+RUN mkdir /middleman
+ADD static_generator /middleman
 RUN apt-get update; \
   apt-get install -y --no-install-recommends nodejs
 
 RUN gem install bundler -v 2.2.5
-RUN bundle install
+RUN cd /middleman && bundle install
 
 ADD entrypoint.sh /entrypoint.sh
 

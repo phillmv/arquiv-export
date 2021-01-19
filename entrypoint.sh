@@ -8,16 +8,12 @@ echo 'Installing bundles...'
 # bundle install
 # bundle list | grep "middleman ("
 
-pwd
-echo `ls`
-echo `ls /`
 echo 'Building site...'
+cd /middleman
 bundle exec middleman build --verbose
 
-pwd
-echo `ls`
 echo 'Publishing site...'
-cd /build
+cd /middleman/build
 # cd ${INPUT_BUILD_LOCATION}
 remote_repo="https://${INPUT_GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${INPUT_GITHUB_REPOSITORY}.git" && \
 remote_branch=${INPUT_REMOTE_BRANCH}
