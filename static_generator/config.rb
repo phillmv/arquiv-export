@@ -1,7 +1,10 @@
 require 'gfm_renderer/gfm_template'
 require 'gfm_renderer/converter'
 
-Converter.new(".", "./source/entries").process!
+puts "converting arquivo files"
+puts "nput dir: #{ENV["GITHUB_WORKSPACE"]}"
+
+Converter.new(ENV["GITHUB_WORKSPACE"], "./source/entries").process!
 
 puts "where are these files???"
 puts __dir__

@@ -10,13 +10,15 @@ echo 'Installing bundles...'
 
 pwd
 echo `ls`
+echo `ls /`
 echo 'Building site...'
 bundle exec middleman build --verbose
 
 pwd
 echo `ls`
 echo 'Publishing site...'
-cd ${INPUT_BUILD_LOCATION}
+cd /build
+# cd ${INPUT_BUILD_LOCATION}
 remote_repo="https://${INPUT_GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${INPUT_GITHUB_REPOSITORY}.git" && \
 remote_branch=${INPUT_REMOTE_BRANCH}
 git init
