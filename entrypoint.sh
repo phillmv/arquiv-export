@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -xeo pipefail
 
 echo 'Installing bundles...'
 # cd ${INPUT_SITE_LOCATION}
@@ -8,9 +8,11 @@ echo 'Installing bundles...'
 # bundle install
 # bundle list | grep "middleman ("
 
+pwd
 echo 'Building site...'
 bundle exec middleman build --verbose
 
+echo `ls`
 echo 'Publishing site...'
 cd ${INPUT_BUILD_LOCATION}
 remote_repo="https://${INPUT_GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${INPUT_GITHUB_REPOSITORY}.git" && \
