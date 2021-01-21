@@ -14,6 +14,9 @@ bundle exec middleman build --verbose
 
 echo 'Publishing site...'
 cd /middleman/build
+if [ ! -z ${INPUT_CNAME} ]; then
+  echo ${INPUT_CNAME} > CNAME
+fi
 # cd ${INPUT_BUILD_LOCATION}
 remote_repo="https://${INPUT_GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${INPUT_GITHUB_REPOSITORY}.git" && \
 remote_branch=${INPUT_REMOTE_BRANCH}
