@@ -36,3 +36,7 @@ inputs:
     description: 'Your gh pages CNAME if any'
     required: false
     default: ''
+  HTTP_PREFIX:
+    description: 'Middleman http_prefix variable if not using a CNAME or page root"
+    required: false
+    default: ''
