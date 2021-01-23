@@ -88,7 +88,7 @@ configure :build do
   # activate :relative_assets
   # ALSO needs to be configurable
   if ENV["INPUT_HTTP_PREFIX"]
-    set :http_prefix, '/#{ENV["INPUT_HTTP_PREFIX"]}'
+    set :http_prefix, "/#{ENV["INPUT_HTTP_PREFIX"]}"
   end
   #set :http_prefix, '/test-middleman-actions'
 end
