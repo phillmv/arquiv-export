@@ -7,7 +7,7 @@ branding:
   color: 'orange'
 runs:
   using: 'docker'
-  image: 'ghcr.io/phillmv/arquivo-export:20200601-with-entrypoint'
+  image: 'docker://ghcr.io/phillmv/arquivo-export:20200601-with-entrypoint'
 inputs:
   GITHUB_REPOSITORY:
     description: 'Github repository to push built site to'
