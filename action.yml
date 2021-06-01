@@ -7,7 +7,7 @@ branding:
   color: 'orange'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'ghcr.io/phillmv/arquivo-export:20200601-with-entrypoint'
 inputs:
   GITHUB_REPOSITORY:
     description: 'Github repository to push built site to'
@@ -17,10 +17,6 @@ inputs:
     description: 'Name of the deploy actor'
     required: false
     default: ${{ github.actor }}
-  SITE_LOCATION:
-    description: 'Location of Middleman project within your repo'
-    required: false
-    default: '.'
   BUILD_LOCATION:
     description: 'Location where Middleman builds your website'
     required: false
