@@ -27,7 +27,8 @@ inputs:
     default: 'gh-pages'
   GITHUB_TOKEN:
     description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
-    required: true
+    required: false
+    default: ${{ github.token }}
   CNAME:
     description: 'Your gh pages CNAME if any'
     required: false
