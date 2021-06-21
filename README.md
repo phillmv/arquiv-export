@@ -39,8 +39,5 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Build & Deploy to GitHub Pages
-        with:
-          REMOTE_BRANCH: gh-pages
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: phillmv/arquivo-export@main
 ```
