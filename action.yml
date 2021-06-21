@@ -12,6 +12,10 @@ inputs:
     description: 'Your GitHub Pages CNAME, if any.'
     required: false
     default: ''
+  INPUT_FOLDER:
+    description: 'A subdirectory of the input repository which contains the markdown we wish to convert to a static site, i.e. docs/ or src/blog'
+    required: false
+    default: ''
   GITHUB_REPOSITORY:
     description: 'Target GitHub repository, which receives the built static site.'
     required: false

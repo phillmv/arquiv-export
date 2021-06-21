@@ -3,7 +3,13 @@
 set -xeo pipefail
 cd /arquivo
 echo "\n\n\n#########\nimporting\n-------------"
-STATIC_PLS=true NOTEBOOK_PATH=$GITHUB_WORKSPACE bundle exec rails static:import
+if [ ! -z ${INPUT_INPUT_FOLDER} ]; then
+  input_path="${GITHUB_WORKSPACE}/${INPUT_INPUT_FOLDER}"
+else
+  input_path=$GITHUB_WORKSPACE
+fi
+
+STATIC_PLS=true NOTEBOOK_PATH=$input_path bundle exec rails static:import
 
 # we boot up the server in the bg
 STATIC_PLS=true bundle exec rails s -d
