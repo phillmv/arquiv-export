@@ -1,25 +1,36 @@
-# A GitHub Action to Build and Deploy Middleman to Github Pages
+# Arquivo Static Site Generator: A GitHub Action
 
-A GitHub Action for building and deploying a Middleman repo to its `gh-pages` branch.
+This GitHub Action converts [arquivo notebook](https://github.com/phillmv/arquivo) exports, or folders with ad-hoc markdown files, into a static site.
 
-## Inputs
+It then pushes this static site to any given repo, so that it may be hosted as a GitHub Page.
 
-* `GITHUB_REPOSITORY`: Repo where built website will be published to (optional, defaults to repo name)
-* `BUILD_LOCATION`: Location where Middleman builds your website (optional, defaults to `build`)
-* `GITHUB_ACTOR`: Name of the deploy actor (optional, defaults to `deploy`)
-* `REMOTE_BRANCH`: Name of the branch to push the project to (optional, detaults to `gh-pages`)
-* `SITE_LOCATION`: Location of your Middleman project within the repo (optional, defaults to project root)
+## What do you mean by ad-hoc Markdown files?
 
-## Example
+I mean, files ending in `.md` or `.markdown` whose contents look like this:
 
-Add this to `.github/workflows/gh-pages.yml` of your project.
+```
+---
+occurred_at: 2021-12-31
+---
+
+# hello world
+
+this is valid markdown, with a yaml front-matter.
+```
+
+will be converted to html. Also, any non markdown files will be copied over as well.
+
+## Working example
+
+Add the following to your own repo, under the `.github/workflows/arquivo.yml` file path.
 
 ```yaml
-name: Middleman
+name: Arquivo Static Export
 
 on:
+  workflow_dispatch:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build_and_deploy:
