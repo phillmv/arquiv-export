@@ -2,6 +2,7 @@
 
 set -xeo pipefail
 cd /arquivo
+git pull
 echo "\n\n\n#########\nimporting\n-------------"
 STATIC_PLS=true NOTEBOOK_PATH=$GITHUB_WORKSPACE bundle exec rails static:import
 
