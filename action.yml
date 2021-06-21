@@ -1,39 +1,30 @@
-
-name: Arquivo Static Export Action
-description: 'Converts Arquivo yaml into a static site using the gh-pages branch of the same repository'
-author: "Phill mV"
+name: Arquivo Static Site Generator
+description: 'Converts Arquivo notebooks, or folders with ad-hoc markdown files, into a static site. It then pushes that site to any given repo, so that it may be hosted as a GitHub Page.'
+author: "Phill MV"
 branding:
-  icon: 'box'
-  color: 'orange'
+  icon: 'book-open'
+  color: 'blue'
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/phillmv/arquivo-export:20200601-with-entrypoint'
+  image: 'Dockerfile'
 inputs:
+  CNAME:
+    description: 'Your GitHub Pages CNAME, if any.'
+    required: false
+    default: ''
   GITHUB_REPOSITORY:
-    description: 'Github repository to push built site to'
+    description: 'Target GitHub repository, which receives the built static site.'
     required: false
     default: ${{ github.repository }}
+  REMOTE_BRANCH:
+    description: 'Target repository branch for the built static site.'
+    required: false
+    default: 'gh-pages'
   GITHUB_ACTOR:
     description: 'Name of the deploy actor'
     required: false
     default: ${{ github.actor }}
-  BUILD_LOCATION:
-    description: 'Location where Middleman builds your website'
-    required: false
-    default: 'build'
-  REMOTE_BRANCH:
-    description: 'Branch name to push built sity to'
-    required: false
-    default: 'gh-pages'
   GITHUB_TOKEN:
     description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
     required: false
     default: ${{ github.token }}
-  CNAME:
-    description: 'Your gh pages CNAME if any'
-    required: false
-    default: ''
-  HTTP_PREFIX:
-    description: 'Middleman http_prefix variable if not using a CNAME or page root'
-    required: false
-    default: ''
