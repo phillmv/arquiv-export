@@ -15,7 +15,6 @@ echo "\n\n\n#########\nbuilding\n-------------"
 # so we can fetch the static html
 STATIC_PLS=true bundle exec rails static:generate
 cd /arquivo/out
-curl localhost:3000/tags > raw_tags.html
 
 echo "\n\n\n#########\npublishing\n-------------"
 
